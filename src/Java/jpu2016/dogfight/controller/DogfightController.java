@@ -42,7 +42,8 @@ public class DogfightController implements IOrderPerformer {
     }
 
     public void play(){
-
+        this.gameLoop();
+        this.viewSystem.displayMessage("Game Over");
     }
 
     public void setViewSystem(IViewSystem viewSystem){

@@ -1,6 +1,9 @@
 package jpu2016.dogfight.model;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Mobile class
@@ -19,12 +22,28 @@ public abstract class Mobile implements IMobile {
     protected DogfightModel dogfightModel;
 
     Mobile(Direction direction, Position position, Dimension dimension, int speed, final String image){
-
         this.direction = direction;
         this.position = position;
         this.dimension = dimension;
         this.speed = speed;
         this.filenameIMG = image;
+
+        //Chargement de l'image
+        try{
+            this.loadImage();
+        }catch (Exception e){
+            System.out.println(e);
+        }
+
+
+    }
+
+    private void loadImage() throws IOException{
+        InputStream in = getClass().getResourceAsStream(filenameIMG);
+        this.setImage(ImageIO.read(in));
+    }
+    public void setImage(Image image){
+        this.Fimage = image;
 
     }
     //MOUVEMENT

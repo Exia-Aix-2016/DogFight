@@ -61,6 +61,11 @@ public abstract class Mobile implements IMobile {
     }
 
     @Override
+    public Position getPositions(){
+        return this.position;
+    }
+
+    @Override
     public Dimension getDimension() {
         return this.dimension;
     }

@@ -39,6 +39,30 @@ public interface IDogfightModel {
 
     void setMobilesHavesMoved();
 
+    /**
+     * @return Position du DogfightModel
+     * */
+    Position getPosition();
+
+    /**
+     * @param position Set la position du dogfightModel
+     * */
+    void setPosition(Position position);
+
+    /**
+     * @param y Set la position en y
+     * @param x Set la position en x
+     * */
+    void setPosition(final double x, final double y);
+
+    /**
+     * @param y Set la position en y
+     * @param x Set la position en x
+     * @param maxX Set la position max en x
+     * @param maxY Set la position max en y
+     * */
+    void setPosition(final double x, final double y, final double maxX, final double maxY);
+
 
 
 }

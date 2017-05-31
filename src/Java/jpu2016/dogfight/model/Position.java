@@ -5,10 +5,22 @@ package jpu2016.dogfight.model;
  */
 public class Position {
 
+    /**
+     * Position en x
+     * */
     private double x;
+    /**
+     * Position en y
+     * */
     private double y;
 
+    /**
+     * Position max en x
+     * */
     private double maxX;
+    /**
+     * Position max en y
+     * */
     private double maxY;
 
 

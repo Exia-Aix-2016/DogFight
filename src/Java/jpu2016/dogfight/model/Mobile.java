@@ -163,12 +163,10 @@ public abstract class Mobile implements IMobile {
     }
 
     @Override
-    public abstract boolean isWeapon();
+    public boolean isWeapon(){
+        return false;
+    }
 
-    /**
-     * ??? a IMPLEMENTER
-     * */
-    @Deprecated
     public Color getColor(){
         return new Color(0000);
     }

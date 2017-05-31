@@ -15,15 +15,15 @@ public class Missile extends Mobile {
     private int distance_traveled = 0;
 
     /**
-     * Missile construct
-     * @param dimension Set dimension
-     * @param direction Set Direction
+     * @see Mobile
      * */
     @Deprecated
     public Missile(Direction direction, Dimension dimension){
         super(direction, null, dimension, SPEED, image);
     }
-
+    /**
+     * @see Mobile
+     * */
     public Missile(Direction direction, Position position){
         super(direction, position, new Dimension(WIDTH, HEIGHT), SPEED, image);
     }

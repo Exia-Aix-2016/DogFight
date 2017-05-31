@@ -12,11 +12,18 @@ public class Cloud extends Mobile{
     private static final int HEIGHT = 150;
     private static String image = "cloud.png";
 
+    /**
+     * @see Mobile
+     * */
+    @Deprecated
     Cloud(Direction direction, Dimension dimension){
         super(direction, null, dimension, SPEED, image);
     }
-    Cloud(Direction direction){
-        super(direction, null, new Dimension(WIDTH, HEIGHT), SPEED, image);
+    /**
+     * @see Mobile
+     * */
+    Cloud(Direction direction, Position position){
+        super(direction, position, new Dimension(WIDTH, HEIGHT), SPEED, image);
     }
     @Override
     public boolean isPlayer(int player) {

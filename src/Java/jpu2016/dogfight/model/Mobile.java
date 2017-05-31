@@ -12,9 +12,9 @@ public abstract class Mobile implements IMobile {
     private int speed;
     private Image Fimage;
 
-    private Direction direction;
-    private Dimension dimension;
-    private Position position;
+    protected Direction direction;
+    protected Dimension dimension;
+    protected Position position;
     private String filenameIMG;
     protected DogfightModel dogfightModel;
 
@@ -27,26 +27,71 @@ public abstract class Mobile implements IMobile {
         this.filenameIMG = image;
 
     }
-
+    //MOUVEMENT
+    /**
+     * Avancer en haut
+     * */
     public void moveUP(){
         this.direction = Direction.UP;
+        this.move();
     }
+    /**
+     * Avancer en bas
+     * */
     public void moveDOWN(){
         this.direction = Direction.DOWN;
+        this.move();
     }
+
+    /**
+     * Avancer vers la droite
+     * */
     public void moveRIGHT(){
         this.direction = Direction.RIGHT;
+        this.move();
     }
+
+    /**
+     * Avancer vers la gauche
+     * */
     public void moveLEFT(){
         this.direction = Direction.LEFT;
+        this.move();
     }
+
+    /**
+     * Permet de faire avancer l'objet Mobile dans la direction
+     * */
     @Override
-    public abstract void move();
+    public void move() {
+        double y = this.getPosition().getY();
+        double x = this.getPosition().getX();
+
+        switch (this.direction){
+            case UP:
+                this.getPositions().setY(y + this.getSpeed());
+                break;
+
+            case DOWN:
+                this.getPositions().setY(y - this.getSpeed());
+                break;
+            case RIGHT:
+                this.getPositions().setY(x + this.getSpeed());
+                break;
+            case LEFT:
+                this.getPositions().setY(x - this.getSpeed());
+                break;
+        }
+    }
+
     @Override
     public Direction getDirection() {
         return this.direction;
     }
 
+    /**
+     * Il est préfèrable d'utiliser les méthode move#()
+     * */
     @Override
     public void setDirection(Direction direction) {
         this.direction = direction;

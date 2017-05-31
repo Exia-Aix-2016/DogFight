@@ -20,6 +20,9 @@ public interface IMobile {
      * @return Position
      * */
     Point getPosition();
+    /**
+     * @return la position x, y de l'objet (Position)
+     * */
     Position getPositions();
 
     /**

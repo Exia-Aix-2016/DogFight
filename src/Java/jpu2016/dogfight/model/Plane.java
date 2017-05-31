@@ -25,16 +25,11 @@ public class Plane extends Mobile {
 
     @Override
     public boolean hit() {
-
         this.dogfightModel.removeMobile(this);
-
         return true;
     }
 
-    @Override
-    public void move() {
 
-    }
 
     @Override
     public boolean isWeapon() {

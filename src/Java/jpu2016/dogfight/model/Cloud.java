@@ -19,15 +19,6 @@ public class Cloud extends Mobile{
         super(direction, null, new Dimension(WIDTH, HEIGHT), SPEED, image);
     }
     @Override
-    public boolean hit() {
-        return false;
-    }
-
-    @Override
-    public boolean isWeapon() {
-        return false;
-    }
-    @Override
     public boolean isPlayer(int player) {
         return false;
     }

@@ -101,6 +101,8 @@ public abstract class Mobile implements IMobile {
                 this.getPositions().setY(x - this.getSpeed());
                 break;
         }
+
+        this.dogfightModel.notification();
     }
 
     @Override

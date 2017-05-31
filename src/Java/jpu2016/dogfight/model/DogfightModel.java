@@ -42,6 +42,7 @@ public class DogfightModel extends Observable implements IDogfightModel{
     @Override
     public void addMobile(IMobile mobile){
         this.mobiles.add(mobile);
+        this.notification();
     }
 
     @Override
@@ -53,6 +54,7 @@ public class DogfightModel extends Observable implements IDogfightModel{
                 break;
             }
         }
+        this.notification();
     }
 
     @Override
@@ -100,5 +102,14 @@ public class DogfightModel extends Observable implements IDogfightModel{
         this.position.setX(x);
         this.position.setY(y);
 
+    }
+
+    /**
+     * Permet au Mobile de notifier leur mouvements
+     * */
+    public void notification(){
+
+        this.setChanged();
+        this.notifyObservers();
     }
 }

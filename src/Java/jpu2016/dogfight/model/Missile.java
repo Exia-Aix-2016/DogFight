@@ -60,6 +60,7 @@ public class Missile extends Mobile {
                     this.getPositions().setY(x - this.getSpeed());
                     break;
             }
+            this.dogfightModel.notification();
         }
     }
     public boolean hit(){

@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 
-public class GraphicsBuilder implements IGraphicsBuilder{
+public abstract class GraphicsBuilder implements IGraphicsBuilder{
     private BufferedImage emptySky;
     private IDogfightModel dogfightModel;
 

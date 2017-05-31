@@ -15,7 +15,9 @@ public class Cloud extends Mobile{
     Cloud(Direction direction, Dimension dimension){
         super(direction, null, dimension, SPEED, image);
     }
-
+    Cloud(Direction direction){
+        super(direction, null, new Dimension(WIDTH, HEIGHT), SPEED, image);
+    }
     @Override
     public boolean hit() {
         return false;
@@ -24,6 +26,11 @@ public class Cloud extends Mobile{
     @Override
     public boolean isWeapon() {
         return false;
+    }
+
+    @Override
+    public void move() {
+
     }
 
     @Override

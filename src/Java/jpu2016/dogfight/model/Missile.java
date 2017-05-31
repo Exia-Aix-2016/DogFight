@@ -19,10 +19,12 @@ public class Missile extends Mobile {
      * @param dimension Set dimension
      * @param direction Set Direction
      * */
-    Missile(Direction direction, Dimension dimension){
+    public Missile(Direction direction, Dimension dimension){
         super(direction, null, dimension, SPEED, image);
     }
-
+    public Missile(Direction direction){
+        super(direction, null, new Dimension(WIDTH, HEIGHT), SPEED, image);
+    }
     public static int getWidthWithADirection(Direction direction){
         return 0;
     }

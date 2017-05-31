@@ -27,12 +27,6 @@ public class Cloud extends Mobile{
     public boolean isWeapon() {
         return false;
     }
-
-    @Override
-    public void move() {
-
-    }
-
     @Override
     public boolean isPlayer(int player) {
         return false;

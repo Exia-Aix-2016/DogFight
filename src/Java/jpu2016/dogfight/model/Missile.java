@@ -37,16 +37,34 @@ public class Missile extends Mobile {
 
     @Override
     public void move(){
-
+        double y = this.getPosition().getY();
+        double x = this.getPosition().getX();
         distance_traveled += this.getSpeed();
-
         if(this.distance_traveled == MAX_DISTANCE_TRAVELED){
             this.dogfightModel.removeMobile(this);
-        }
+        }else{
+            switch (this.direction){
+                case UP:
+                    this.getPositions().setY(y + this.getSpeed());
+                    break;
 
+                case DOWN:
+                    this.getPositions().setY(y - this.getSpeed());
+                    break;
+
+                case RIGHT:
+                    this.getPositions().setY(x + this.getSpeed());
+                    break;
+
+                case LEFT:
+                    this.getPositions().setY(x - this.getSpeed());
+                    break;
+            }
+        }
     }
     public boolean hit(){
-        return false;
+        this.dogfightModel.removeMobile(this);
+        return true;
     }
     @Override
     public boolean isWeapon() {

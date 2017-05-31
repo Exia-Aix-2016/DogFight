@@ -57,6 +57,8 @@ public class DogfightModel extends Observable implements IDogfightModel{
 
     }
 
+
+    @Deprecated
     @Override
     public void setMobilesHavesMoved(){
 

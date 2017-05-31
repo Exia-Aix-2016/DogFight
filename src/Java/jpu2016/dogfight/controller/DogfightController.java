@@ -1,6 +1,6 @@
 package jpu2016.dogfight.controller;
 
-import jpu2016.dogfight.model.IDogfightModel;
+import jpu2016.dogfight.model.*;
 import jpu2016.dogfight.view.IViewSystem;
 
 public class DogfightController implements IOrderPerformer {
@@ -26,7 +26,12 @@ public class DogfightController implements IOrderPerformer {
     }
 
     private void lauchMissile(int player){
+        IMobile plane = this.dogfightModel.getMobileByPlayer(player);
+        Direction direction = plane.getDirection();
+        Position position = plane.getPositions();
 
+        IMobile missile = new Missile(direction, position);
+        this.dogfightModel.addMobile(missile);
     }
 
     private void gameLoop(){

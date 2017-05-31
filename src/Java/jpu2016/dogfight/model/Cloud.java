@@ -1,7 +1,13 @@
 package jpu2016.dogfight.model;
 
 /**
- * Created by Mandel on 31/05/2017.
+ * Représente les nuages
+ * @author Mandel Vaubourg
+ * @version 1.0
  */
-public class Cloud {
+public class Cloud extends Mobile{
+
+    public Cloud(){
+
+    }
 }

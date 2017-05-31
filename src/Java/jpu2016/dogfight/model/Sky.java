@@ -1,7 +1,33 @@
 package jpu2016.dogfight.model;
 
+import java.awt.*;
+
 /**
- * Created by Mandel on 31/05/2017.
+ * Ciel (arrière plan du jeu)
+ * @author Mandel Vaubourg
+ * @version 1.0
  */
-public class Sky {
+public class Sky implements IArea{
+
+    private Dimension dimension;
+    private Image image;
+    /**
+     * @param dimension défini les dimensions du ciel
+     * */
+    public Sky(Dimension dimension){
+
+        this.dimension = dimension;
+
+    }
+    @Override
+    public Dimension getDimention(){
+        return this.dimension;
+    }
+    @Override
+    public Image getImage(){
+
+        return this.image;
+    }
+
+
 }

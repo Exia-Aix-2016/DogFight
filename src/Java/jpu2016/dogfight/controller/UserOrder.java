@@ -7,10 +7,12 @@ public class UserOrder implements IUserOrder {
 
     }
 
+    @Override
     public Order getOrder(){
         return Order.DOWN;
     }
 
+    @Override
     public int getPlayer() {
         return player;
     }

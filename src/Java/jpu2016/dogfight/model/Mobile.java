@@ -98,10 +98,6 @@ public abstract class Mobile implements IMobile {
     @Override
     public abstract boolean isPlayer(int player);
 
-    /**
-     * A IMPLEMENTER
-     * */
-    @Deprecated
     @Override
     public void setDogfightModel(DogfightModel dogfightModel) {
 

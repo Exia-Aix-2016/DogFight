@@ -42,4 +42,9 @@ public class Missile extends Mobile {
     public boolean isWeapon() {
         return true;
     }
+
+    @Override
+    public boolean isPlayer(int player) {
+        return false;
+    }
 }

@@ -1,18 +1,17 @@
 package jpu2016.dogfight.model;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
-public class DogfightModel implements IDogfightModel {
+public class DogfightModel extends Observable implements IDogfightModel{
 
     ArrayList<IMobile> mobiles;
     IArea area;
+    Position position;
 
-    /**
-     * Pas encore implémenté
-     *
-     * */
-    @Deprecated
-    public DogfightModel(){
+    public DogfightModel(Position position){
+        this.position = position;
+        this.mobiles = new ArrayList<>();
 
 
     }
@@ -50,6 +49,10 @@ public class DogfightModel implements IDogfightModel {
 
     @Override
     public IMobile getMobileByPlayer(final int player){
+        if(this.mobiles.get(player).isPlayer(player)){
+            return this.mobiles.get(player);
+        }
+
         return this.mobiles.get(player);
 
     }
@@ -57,5 +60,13 @@ public class DogfightModel implements IDogfightModel {
     @Override
     public void setMobilesHavesMoved(){
 
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
     }
 }

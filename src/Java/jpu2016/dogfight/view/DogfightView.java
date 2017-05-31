@@ -1,16 +1,18 @@
 package jpu2016.dogfight.view;
 
+import jpu2016.dogfight.controller.IOrderPerformer;
+import jpu2016.dogfight.model.IDogfightModel;
 import jpu2016.gameframe.GameFrame;
+
+import java.util.Observer;
 
 public class DogfightView implements Runnable, IViewSystem {
     private EventPerformer eventPerformer;
     private GraphicsBuilder graphicsBuilder;
     private GameFrame gameFrame;
 
-    public DogfightView(EventPerformer eventPerformer, GraphicsBuilder graphicsBuilder, GameFrame gameFrame){
-        this.eventPerformer = eventPerformer;
-        this.graphicsBuilder = graphicsBuilder;
-        this.gameFrame = gameFrame;
+    public DogfightView(IOrderPerformer orderPerformer, IDogfightModel dogfightModel, Observer observer){
+        
     }
 
     public void setEventPerformer(EventPerformer eventPerformer) {

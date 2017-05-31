@@ -9,14 +9,22 @@ import java.awt.event.KeyEvent;
 public abstract class EventPerformer implements IEventPerformer {
     private IOrderPerformer orderPerformer;
 
+    public EventPerformer(){}
+
     public EventPerformer(IOrderPerformer oderPerformer){}
+
+    public void setOrderPerformer(IOrderPerformer orderPerformer) {
+        this.orderPerformer = orderPerformer;
+    }
+
+    public IOrderPerformer getOrderPerformer() {
+        return orderPerformer;
+    }
 
     public void eventPerformer(KeyEvent KeyCode){}
 
 
-    /**
-     * A IMPLEMENTER
-     * */
+
     @Deprecated
     private UserOrder keyCodeToUserOrder (int keyCode){
         return null;

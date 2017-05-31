@@ -14,6 +14,21 @@ public abstract class GraphicsBuilder implements IGraphicsBuilder{
 
     public GraphicsBuilder (IDogfightModel dogfightModel){}
 
+    public void setDogfightModel(IDogfightModel dogfightModel) {
+        this.dogfightModel = dogfightModel;
+    }
+    public IDogfightModel getDogfightModel() {
+        return dogfightModel;
+    }
+
+    public void setEmptySky(BufferedImage emptySky) {
+        this.emptySky = emptySky;
+    }
+
+    public BufferedImage getEmptySky() {
+        return emptySky;
+    }
+
     public void applyModelToGraphic(Graphics graphics, ImageObserver observer){}
 
     private void buildEmptySky(){}

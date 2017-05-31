@@ -7,7 +7,7 @@ import java.awt.*;
  * @author Mandel Vaubourg
  * @version 1.0
  */
-public abstract class Sky implements IArea{
+public class Sky implements IArea{
 
     private Dimension dimension;
     private Image image;

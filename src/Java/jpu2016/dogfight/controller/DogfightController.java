@@ -76,6 +76,18 @@ public class DogfightController implements IOrderPerformer {
     }
 
     private void gameLoop(){
-
+        while (true){
+            ArrayList<IMobile> mobiles = this.dogfightModel.getMobiles();
+            for (IMobile mobile: mobiles){
+                mobile.move();
+                if (mobile instanceof Missile){
+                    Optional<Plane> hit = isWeaponOnMobile((Missile) mobile);
+                    if (hit.isPresent()){
+                        this.manageCollision((Missile) mobile, hit.get());
+                        break;
+                    }
+                }
+            }
+        }
     }
 }

@@ -69,7 +69,12 @@ public class DogfightController implements IOrderPerformer {
 
         return Optional.empty();
     }
-    
+
+    private void manageCollision(Missile missile, Plane plane){
+        missile.hit();
+        plane.hit();
+    }
+
     private void gameLoop(){
 
     }

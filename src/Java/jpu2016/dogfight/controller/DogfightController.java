@@ -14,7 +14,27 @@ public class DogfightController implements IOrderPerformer {
 
     @Override
     public void orderPerform(UserOrder userOrder){
+        IMobile mobile = this.dogfightModel.getMobileByPlayer(userOrder.getPlayer());
 
+        switch (userOrder.getOrder()){
+            case UP:
+                mobile.setDirection(Direction.UP);
+                break;
+            case RIGHT:
+                mobile.setDirection(Direction.RIGHT);
+                break;
+            case DOWN:
+                mobile.setDirection(Direction.DOWN);
+                break;
+            case LEFT:
+                mobile.setDirection(Direction.LEFT);
+                break;
+            case SHOOT:
+                this.lauchMissile(userOrder.getPlayer());
+                break;
+            case NOP:
+                break;
+        }
     }
 
     public void play(){

@@ -3,6 +3,9 @@ package jpu2016.dogfight.controller;
 import jpu2016.dogfight.model.*;
 import jpu2016.dogfight.view.IViewSystem;
 
+import java.util.ArrayList;
+import java.util.Optional;
+
 public class DogfightController implements IOrderPerformer {
     private static int TIME_SLEEP = 30;
     private IViewSystem viewSystem;
@@ -54,6 +57,19 @@ public class DogfightController implements IOrderPerformer {
         this.dogfightModel.addMobile(missile);
     }
 
+    private Optional<Plane> isWeaponOnMobile(Missile missile){
+
+        ArrayList<IMobile> mobiles = this.dogfightModel.getMobiles();
+
+        for (IMobile mobile: mobiles){
+            if (mobile instanceof Plane){
+                return Optional.of((Plane) mobile);
+            }
+        }
+
+        return Optional.empty();
+    }
+    
     private void gameLoop(){
 
     }

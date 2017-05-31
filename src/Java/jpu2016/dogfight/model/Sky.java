@@ -3,11 +3,11 @@ package jpu2016.dogfight.model;
 import java.awt.*;
 
 /**
- * Ciel (arrière plan du jeu)
+ * Sky Model (arrière plan du jeu)
  * @author Mandel Vaubourg
  * @version 1.0
  */
-public class Sky implements IArea{
+public abstract class Sky implements IArea{
 
     private Dimension dimension;
     private Image image;

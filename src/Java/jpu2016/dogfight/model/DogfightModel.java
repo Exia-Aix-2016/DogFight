@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class DogfightModel implements IDogfightModel {
 
     ArrayList<IMobile> mobiles;
-    Sky area;
+    IArea area;
 
     /**
      * Pas encore implémenté
@@ -23,7 +23,7 @@ public class DogfightModel implements IDogfightModel {
 
     @Override
     public void buildArea(Dimension dimension){
-        this.area = new Sky(dimension);
+       //this.area = new IArea(dimension);
     }
 
     @Override

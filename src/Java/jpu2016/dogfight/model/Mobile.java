@@ -3,16 +3,19 @@ package jpu2016.dogfight.model;
 import java.awt.*;
 
 /**
- * Created by Mandel on 31/05/2017.
- */
-public class Mobile implements IMobile {
+ * Mobile class
+ * @author Mandel Vaubourg
+ * @version 1.0
+ * */
+public abstract class Mobile implements IMobile {
 
     private int speed;
-    private Image image;
+    private Image Fimage;
 
     private Direction direction;
     private Dimension dimension;
     private Position position;
+    private String filenameIMG;
 
     Mobile(Direction direction, Position position, Dimension dimension, int speed, final String image){
 
@@ -20,6 +23,7 @@ public class Mobile implements IMobile {
         this.position = position;
         this.dimension = dimension;
         this.speed = speed;
+        this.filenameIMG = image;
 
     }
 
@@ -51,61 +55,67 @@ public class Mobile implements IMobile {
 
     @Override
     public Point getPosition() {
-        return null;
+        Point point = new Point();
+        point.setLocation(this.getPosition().getX(), this.getPosition().getY());
+        return point;
     }
 
     @Override
     public Dimension getDimension() {
-        return null;
+        return this.dimension;
     }
 
     @Override
     public int getWidth() {
-        return 0;
+        return this.getDimension().getWidth();
     }
 
     @Override
     public int getHeight() {
-        return 0;
+        return this.getDimension().getHeight();
     }
 
     @Override
     public int getSpeed() {
-        return 0;
+        return this.speed;
     }
 
     @Override
     public Image getImage() {
-        return null;
+        return this.Fimage;
     }
 
 
-
+    /**
+     * A IMPLEMENTER
+     * */
+    @Deprecated
     @Override
     public void placeInArea(IArea area) {
 
     }
 
     @Override
-    public boolean isPlayer(int player) {
-        return false;
-    }
+    public abstract boolean isPlayer(int player);
 
+    /**
+     * A IMPLEMENTER
+     * */
+    @Deprecated
     @Override
     public void setDogfightModel(DogfightModel dogfightModel) {
 
     }
+    @Override
+    public abstract boolean hit();
 
     @Override
-    public boolean hit() {
-        return false;
-    }
+    public abstract boolean isWeapon();
 
-    @Override
-    public boolean isWeapon() {
-        return false;
-    }
-
+    /**
+     * ??? a IMPLEMENTER
+     * */
+    @Deprecated
     public Color getColor(){
         return null;
     }

@@ -7,7 +7,22 @@ package jpu2016.dogfight.model;
  */
 public class Cloud extends Mobile{
 
-    public Cloud(){
+    private static final int SPEED = 1;
+    private static final int WIDTH = 300;
+    private static final int HEIGHT = 150;
+    private static String image = "cloud.png";
 
+    Cloud(Direction direction, Dimension dimension){
+        super(direction, null, dimension, SPEED, image);
+    }
+
+    @Override
+    public boolean hit() {
+        return false;
+    }
+
+    @Override
+    public boolean isWeapon() {
+        return false;
     }
 }

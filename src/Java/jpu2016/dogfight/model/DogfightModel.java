@@ -9,8 +9,8 @@ public class DogfightModel extends Observable implements IDogfightModel{
     IArea area;
     Position position;
 
-    public DogfightModel(Position position){
-        this.position = position;
+    public DogfightModel(){
+        //this.position = new Position();
         this.mobiles = new ArrayList<>();
 
 
@@ -68,5 +68,16 @@ public class DogfightModel extends Observable implements IDogfightModel{
 
     public void setPosition(Position position) {
         this.position = position;
+    }
+    public void setPosition(final double x, final double y){
+        this.position.setX(x);
+        this.position.setY(y);
+    }
+    public void setPosition(final double x, final double y, final double maxX, final double maxY){
+        this.position.setMaxX(maxX);
+        this.position.setMaxY(maxY);
+        this.position.setX(x);
+        this.position.setY(y);
+
     }
 }

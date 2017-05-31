@@ -25,7 +25,8 @@ public class Plane extends Mobile {
 
     @Override
     public boolean hit() {
-        return false;
+        return true;
+
     }
 
     @Override

@@ -36,7 +36,7 @@ public class Missile extends Mobile {
 
     }
     public boolean hit(){
-        return true;
+        return false;
     }
     @Override
     public boolean isWeapon() {

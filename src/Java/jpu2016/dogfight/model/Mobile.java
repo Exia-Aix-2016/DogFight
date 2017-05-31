@@ -98,10 +98,6 @@ public abstract class Mobile implements IMobile {
     @Override
     public abstract boolean isPlayer(int player);
 
-    /**
-     * A IMPLEMENTER
-     * */
-    @Deprecated
     @Override
     public void setDogfightModel(DogfightModel dogfightModel) {
 
@@ -111,7 +107,9 @@ public abstract class Mobile implements IMobile {
 
     }
     @Override
-    public abstract boolean hit();
+    public boolean hit(){
+        return false;
+    }
 
     @Override
     public abstract boolean isWeapon();

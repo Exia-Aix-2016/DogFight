@@ -20,6 +20,7 @@ public interface IMobile {
      * @return Position
      * */
     Point getPosition();
+    Position getPositions();
 
     /**
      * @return Dimension

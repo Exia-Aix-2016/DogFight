@@ -5,7 +5,7 @@ import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
 
-public class GamePanel extends JPanel implements Observer {
+public abstract class GamePanel extends JPanel implements Observer {
     public GamePanel(IGraphicsBuilder graphicBuilder){
 
     }

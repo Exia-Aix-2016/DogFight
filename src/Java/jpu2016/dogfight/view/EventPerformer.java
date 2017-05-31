@@ -6,23 +6,25 @@ import jpu2016.gameframe.IEventPerformer;
 
 import java.awt.event.KeyEvent;
 
-public class EventPerformer implements IEventPerformer, IOrderPerformer {
+public abstract class EventPerformer implements IEventPerformer {
     private IOrderPerformer orderPerformer;
 
-    public EventPerformer(IOderPerformer oderPerformer){}
+    public EventPerformer(IOrderPerformer oderPerformer){}
 
     public void eventPerformer(KeyEvent KeyCode){}
 
-    private UserOrder keyCodeToUserOrder (int keyCode){}
 
+    /**
+     * A IMPLEMENTER
+     * */
+    @Deprecated
+    private UserOrder keyCodeToUserOrder (int keyCode){
+        return null;
+    }
 
     @Override
     public void eventPerform(KeyEvent keyCode) {
 
     }
 
-    @Override
-    public void orderPerform(UserOrder userOrder) {
-
-    }
 }

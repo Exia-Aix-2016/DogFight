@@ -56,7 +56,7 @@ public abstract class Mobile implements IMobile {
     @Override
     public Point getPosition() {
         Point point = new Point();
-        point.setLocation(this.getPosition().getX(), this.getPosition().getY());
+        point.setLocation(this.position.getX(), this.position.getY());
         return point;
     }
 
@@ -105,6 +105,10 @@ public abstract class Mobile implements IMobile {
     @Override
     public void setDogfightModel(DogfightModel dogfightModel) {
 
+        this.position.setMaxY(dogfightModel.getPosition().getMaxY());
+        this.position.setMaxX(dogfightModel.getPosition().getMaxX());
+        dogfightModel.addMobile(this);
+
     }
     @Override
     public abstract boolean hit();
@@ -117,6 +121,6 @@ public abstract class Mobile implements IMobile {
      * */
     @Deprecated
     public Color getColor(){
-        return null;
+        return new Color(0000);
     }
 }

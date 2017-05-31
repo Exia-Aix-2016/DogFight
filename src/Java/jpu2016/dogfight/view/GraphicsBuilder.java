@@ -1,10 +1,12 @@
 package jpu2016.dogfight.view;
 
+import jpu2016.gameframe.IGraphicsBuilder;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 
-public class GraphicsBuilder extends IGraphicsBuilder{
+public class GraphicsBuilder extends IGraphicsBuilder {
     private BufferedImage emptySky;
     private IDogfightModel dogfightModel;
 

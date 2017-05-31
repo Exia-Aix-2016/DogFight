@@ -107,7 +107,9 @@ public abstract class Mobile implements IMobile {
 
     }
     @Override
-    public abstract boolean hit();
+    public boolean hit(){
+        return false;
+    }
 
     @Override
     public abstract boolean isWeapon();

@@ -9,8 +9,8 @@ public class DogfightModel extends Observable implements IDogfightModel{
     IArea area;
     Position position;
 
-    public DogfightModel(Position position){
-        this.position = position;
+    public DogfightModel(){
+        //this.position = new Position();
         this.mobiles = new ArrayList<>();
 
 

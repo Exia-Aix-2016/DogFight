@@ -16,6 +16,7 @@ public abstract class Mobile implements IMobile {
     private Dimension dimension;
     private Position position;
     private String filenameIMG;
+    protected DogfightModel dogfightModel;
 
     Mobile(Direction direction, Position position, Dimension dimension, int speed, final String image){
 
@@ -40,16 +41,15 @@ public abstract class Mobile implements IMobile {
         this.direction = Direction.LEFT;
     }
     @Override
-    public void move() {
-
-    }
+    public abstract void move();
     @Override
     public Direction getDirection() {
-        return null;
+        return this.direction;
     }
 
     @Override
     public void setDirection(Direction direction) {
+        this.direction = direction;
 
     }
 
@@ -100,6 +100,7 @@ public abstract class Mobile implements IMobile {
 
     @Override
     public void setDogfightModel(DogfightModel dogfightModel) {
+        this.dogfightModel = dogfightModel;
 
         this.position.setMaxY(dogfightModel.getPosition().getMaxY());
         this.position.setMaxX(dogfightModel.getPosition().getMaxX());

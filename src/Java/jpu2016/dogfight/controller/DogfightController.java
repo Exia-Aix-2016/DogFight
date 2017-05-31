@@ -3,6 +3,7 @@ package jpu2016.dogfight.controller;
 import jpu2016.dogfight.model.*;
 import jpu2016.dogfight.view.IViewSystem;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -63,7 +64,22 @@ public class DogfightController implements IOrderPerformer {
 
         for (IMobile mobile: mobiles){
             if (mobile instanceof Plane){
-                return Optional.of((Plane) mobile);
+
+                int mX1 = missile.getPosition().x;
+                int mX2 = mX1 + missile.getWidth();
+                int mY1 = missile.getPosition().y;
+                int mY2 = mY1 + missile.getHeight();
+                Rectangle m = new Rectangle(mX1, mY1, mX2, mY2);
+
+                int pX1 = mobile.getPosition().x;
+                int pX2 = pX1 + mobile.getWidth();
+                int pY1 = mobile.getPosition().y;
+                int pY2 = pY1 + mobile.getHeight();
+                Rectangle p = new Rectangle(pX1, pY1, pX2, pY2);
+
+                if (m.intersects(p)){
+                    return Optional.of((Plane) mobile);
+                }
             }
         }
 

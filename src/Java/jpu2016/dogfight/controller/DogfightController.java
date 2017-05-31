@@ -105,6 +105,11 @@ public class DogfightController implements IOrderPerformer {
                     }
                 }
             }
+            try {
+                Thread.sleep(this.TIME_SLEEP);
+            } catch (Exception e){
+                System.err.println(e);
+            }
         }
     }
 }

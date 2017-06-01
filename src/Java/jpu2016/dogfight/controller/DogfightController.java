@@ -3,9 +3,7 @@ package jpu2016.dogfight.controller;
 import jpu2016.dogfight.model.*;
 import jpu2016.dogfight.view.IViewSystem;
 
-import java.awt.*;
 import java.util.ArrayList;
-import java.util.Optional;
 
 public class DogfightController implements IOrderPerformer {
     private static int TIME_SLEEP = 30;
@@ -59,35 +57,15 @@ public class DogfightController implements IOrderPerformer {
         this.dogfightModel.addMobile(missile);
     }
 
-    private Optional<Plane> isWeaponOnMobile(Missile missile){
-
-        ArrayList<IMobile> mobiles = this.dogfightModel.getMobiles();
-
-        for (IMobile mobile: mobiles){
-            if (mobile instanceof Plane){
-
-                int mX1 = missile.getPosition().x;
-                int mX2 = mX1 + missile.getWidth();
-                int mY1 = missile.getPosition().y;
-                int mY2 = mY1 + missile.getHeight();
-                Rectangle m = new Rectangle(mX1, mY1, mX2, mY2);
-
-                int pX1 = mobile.getPosition().x;
-                int pX2 = pX1 + mobile.getWidth();
-                int pY1 = mobile.getPosition().y;
-                int pY2 = pY1 + mobile.getHeight();
-                Rectangle p = new Rectangle(pX1, pY1, pX2, pY2);
-
-                if (m.intersects(p)){
-                    return Optional.of((Plane) mobile);
-                }
+    private boolean isWeaponOnMobile(final IMobile mobile, final IMobile weapon) {
+        if (((weapon.getPosition().getX() / weapon.getWidth()) >= (mobile.getPosition().getX() / weapon.getWidth())) && ((weapon.getPosition().getX() / weapon.getWidth()) <= ((mobile.getPosition().getX() + mobile.getWidth()) / weapon.getWidth()))) {
+            if (((weapon.getPosition().getY() / weapon.getHeight()) >= (mobile.getPosition().getY() / weapon.getHeight()))     && ((weapon.getPosition().getY() / weapon.getHeight()) <= ((mobile.getPosition().getY() + mobile.getHeight()) / weapon.getHeight()))) {
+                return true;
             }
-        }
-
-        return Optional.empty();
+        }  return false;
     }
 
-    private void manageCollision(Missile missile, Plane plane){
+    private void manageCollision(IMobile missile, IMobile plane){
         missile.hit();
         plane.hit();
     }
@@ -95,16 +73,27 @@ public class DogfightController implements IOrderPerformer {
     private void gameLoop(){
         while (true){
             ArrayList<IMobile> mobiles = this.dogfightModel.getMobiles();
+            ArrayList<IMobile> missiles = new ArrayList<>();
+            ArrayList<IMobile> planes = new ArrayList<>();
+
             for (IMobile mobile: mobiles){
                 mobile.move();
                 if (mobile instanceof Missile){
-                    Optional<Plane> hit = isWeaponOnMobile((Missile) mobile);
-                    if (hit.isPresent()){
-                        this.manageCollision((Missile) mobile, hit.get());
+                    missiles.add(mobile);
+                } else if (mobile instanceof Plane){
+                    planes.add(mobile);
+                }
+            }
+
+            for (IMobile plane: planes){
+                for (IMobile missile: missiles){
+                    if (this.isWeaponOnMobile(plane, missile)){
+                        this.manageCollision(missile, plane);
                         break;
                     }
                 }
             }
+
             try {
                 Thread.sleep(this.TIME_SLEEP);
             } catch (Exception e){

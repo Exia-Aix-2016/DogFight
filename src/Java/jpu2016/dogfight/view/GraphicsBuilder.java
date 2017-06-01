@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.util.ArrayList;
 
-public abstract class GraphicsBuilder implements IGraphicsBuilder{
+public class GraphicsBuilder implements IGraphicsBuilder{
     private BufferedImage emptySky;
     private IDogfightModel dogfightModel;
 
@@ -40,7 +40,7 @@ public abstract class GraphicsBuilder implements IGraphicsBuilder{
     }
 
     private void buildEmptySky(){
-        
+
     }
 
     private void drawMobile(IMobile mobile, Graphics graphics, ImageObserver observer){

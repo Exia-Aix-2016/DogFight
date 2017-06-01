@@ -7,7 +7,7 @@ import jpu2016.gameframe.IEventPerformer;
 
 import java.awt.event.KeyEvent;
 
-public abstract class EventPerformer implements IEventPerformer {
+public  class EventPerformer implements IEventPerformer {
     private IOrderPerformer orderPerformer;
 
 
@@ -21,13 +21,25 @@ public abstract class EventPerformer implements IEventPerformer {
 
     @Deprecated
     private UserOrder keyCodeToUserOrder (int keyCode){
+        Order order;
+
         switch (keyCode){
-            case 72:
-
+            case KeyEvent.VK_UP:
+                order = Order.UP;
                 break;
+            case KeyEvent.VK_DOWN:
+                order = Order.DOWN;
+                break;
+            case KeyEvent.VK_LEFT:
+                order = Order.LEFT;
+                break;
+            case KeyEvent.VK_RIGHT:
+                order = Order.RIGHT;
+                break;
+            default:
+                order = Order.NOP;
         }
-
-        return new UserOrder();
+        return new UserOrder(1, order);
     }
 
     @Override

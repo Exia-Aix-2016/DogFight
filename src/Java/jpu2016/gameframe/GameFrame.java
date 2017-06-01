@@ -1,8 +1,7 @@
 package jpu2016.gameframe;
 
-import jpu2016.dogfight.controller.Order;
-
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Observable;
@@ -12,6 +11,7 @@ public class GameFrame extends JFrame implements KeyListener {
 
     public GameFrame(String title, IEventPerformer performer, IGraphicsBuilder graphicBuilder, Observable observable){
         this.eventPerformer = performer;
+        this.setPreferredSize(new Dimension(graphicBuilder.getGlobalWidth(), graphicBuilder.getGlobalHeight()));
     }
 
     @Override

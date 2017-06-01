@@ -12,7 +12,9 @@ public abstract class GraphicsBuilder implements IGraphicsBuilder{
     private BufferedImage emptySky;
     private IDogfightModel dogfightModel;
 
-    public GraphicsBuilder (IDogfightModel dogfightModel){}
+    public GraphicsBuilder (IDogfightModel dogfightModel){
+        this.dogfightModel = dogfightModel;
+    }
 
     public void setDogfightModel(IDogfightModel dogfightModel) {
         this.dogfightModel = dogfightModel;
@@ -24,7 +26,6 @@ public abstract class GraphicsBuilder implements IGraphicsBuilder{
     public void setEmptySky(BufferedImage emptySky) {
         this.emptySky = emptySky;
     }
-
     public BufferedImage getEmptySky() {
         return emptySky;
     }
@@ -36,10 +37,10 @@ public abstract class GraphicsBuilder implements IGraphicsBuilder{
     private void drawMobile(IMobile mobile, Graphics graphics, ImageObserver observer){}
 
     public int getGlobalWidth(){
-        return 0;
+        return this.dogfightModel.getArea().getDimention().getWidth();
     }
     public int getGlobalHeight(){
-        return 0;
+        return this.dogfightModel.getArea().getDimention().getHeight();
     }
 
 

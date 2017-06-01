@@ -12,6 +12,7 @@ public class GameFrame extends JFrame implements KeyListener {
     public GameFrame(String title, IEventPerformer performer, IGraphicsBuilder graphicBuilder, Observable observable){
         this.eventPerformer = performer;
         this.setSize(new Dimension(graphicBuilder.getGlobalWidth(), graphicBuilder.getGlobalHeight()));
+        this.setTitle(title);
     }
 
     @Override

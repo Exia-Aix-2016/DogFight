@@ -1,7 +1,5 @@
 package jpu2016.gameframe;
 
-import jpu2016.dogfight.model.IMobile;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.Observable;
@@ -11,7 +9,7 @@ public class GamePanel extends JPanel implements Observer {
     private Observable observable;
     private IGraphicsBuilder graphicsBuilder;
 
-    public GamePanel(IGraphicsBuilder graphicBuilder){
+    GamePanel(IGraphicsBuilder graphicBuilder){
         this.graphicsBuilder = graphicBuilder;
     }
 
@@ -23,9 +21,7 @@ public class GamePanel extends JPanel implements Observer {
     @Override
     protected void paintComponent(Graphics graphic) {
         super.paintComponent(graphic);
-
-        IMobile mobile = (IMobile) this.observable;
-        this.graphicsBuilder = graphicsBuilder;
+        this.graphicsBuilder.applyModelToGraphic(graphic,this);
     }
 
 }

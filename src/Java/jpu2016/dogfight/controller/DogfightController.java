@@ -94,6 +94,8 @@ public class DogfightController implements IOrderPerformer {
                 }
             }
 
+            this.dogfightModel.setMobilesHavesMoved();
+
             try {
                 Thread.sleep(this.TIME_SLEEP);
             } catch (Exception e){

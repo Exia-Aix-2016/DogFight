@@ -1,5 +1,6 @@
 package jpu2016.dogfight.view;
 
+import jpu2016.dogfight.model.IArea;
 import jpu2016.dogfight.model.IDogfightModel;
 import jpu2016.dogfight.model.IMobile;
 import jpu2016.gameframe.IGraphicsBuilder;
@@ -15,23 +16,25 @@ public class GraphicsBuilder implements IGraphicsBuilder{
 
     public GraphicsBuilder (IDogfightModel dogfightModel){
         this.dogfightModel = dogfightModel;
+        this.buildEmptySky();
     }
 
-    public void setDogfightModel(IDogfightModel dogfightModel) {
-        this.dogfightModel = dogfightModel;
-    }
     public IDogfightModel getDogfightModel() {
         return dogfightModel;
     }
 
-    public void setEmptySky(BufferedImage emptySky) {
-        this.emptySky = emptySky;
-    }
     public BufferedImage getEmptySky() {
         return emptySky;
     }
 
     public void applyModelToGraphic(Graphics graphics, ImageObserver observer){
+        IArea area = this.dogfightModel.getArea();
+
+        Graphics emptySkyGraphic = this.emptySky.getGraphics();
+        emptySkyGraphic.drawImage(area.getImage(), 0, 0, area.getDimention().getWidth(), area.getDimention().getHeight(), null);
+
+        graphics.drawImage(area.getImage(), 0, 0, area.getDimention().getWidth(), area.getDimention().getHeight(), observer);
+
         ArrayList<IMobile> mobiles = this.dogfightModel.getMobiles();
 
         for(IMobile mobile: mobiles ){
@@ -40,14 +43,9 @@ public class GraphicsBuilder implements IGraphicsBuilder{
     }
 
     private void buildEmptySky(){
-
+        IArea area = this.dogfightModel.getArea();
+        this.emptySky = new BufferedImage(area.getDimention().getWidth(), area.getDimention().getHeight(), Transparency.TRANSLUCENT);
     }
-
-    /*private void drawMobile(IMobile mobile, Graphics graphics, ImageObserver observer){
-        //observer.imageUpdate(mobile.getImage(), ImageObserver.ALLBITS, mobile.getPosition().x, mobile.getPosition().y, mobile.getWidth(), mobile.getHeight());
-        graphics.drawImage(mobile.getImage(), mobile.getPosition().x, mobile.getPosition().y, observer);
-
-    }*/
 
     public int getGlobalWidth(){
         return this.dogfightModel.getArea().getDimention().getWidth();

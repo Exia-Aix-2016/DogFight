@@ -15,14 +15,7 @@ public class Cloud extends Mobile{
     /**
      * @see Mobile
      * */
-    @Deprecated
-    Cloud(Direction direction, Dimension dimension){
-        super(direction, null, dimension, SPEED, image);
-    }
-    /**
-     * @see Mobile
-     * */
-    Cloud(Direction direction, Position position){
+    public Cloud(Direction direction, Position position){
         super(direction, position, new Dimension(WIDTH, HEIGHT), SPEED, image);
     }
     @Override

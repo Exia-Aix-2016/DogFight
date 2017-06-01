@@ -35,7 +35,6 @@ public class DogfightView implements Runnable, IViewSystem {
 
     @Override
     public void run() {
-        this.graphicsBuilder.applyModelToGraphic(this.gameFrame.getGraphics(), this.gameFrame);
         this.gameFrame.setVisible(true);
     }
 

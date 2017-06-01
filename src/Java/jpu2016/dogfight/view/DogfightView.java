@@ -12,27 +12,18 @@ public class DogfightView implements Runnable, IViewSystem {
     private GameFrame gameFrame;
 
     public DogfightView(IOrderPerformer orderPerformer, IDogfightModel dogfightModel, Observable observable){
-        
-    }
+        this.eventPerformer = new EventPerformer(orderPerformer);
+        this.graphicsBuilder = new GraphicsBuilder(dogfightModel);
 
-    public void setEventPerformer(EventPerformer eventPerformer) {
-        this.eventPerformer = eventPerformer;
+        this.gameFrame = new GameFrame("DogFight", this.eventPerformer, this.graphicsBuilder, observable);
     }
 
     public EventPerformer getEventPerformer() {
         return eventPerformer;
     }
 
-    public void setGameFrame(GameFrame gameFrame) {
-        this.gameFrame = gameFrame;
-    }
-
     public GameFrame getGameFrame() {
         return gameFrame;
-    }
-
-    public void setGraphicsBuilder(GraphicsBuilder graphicsBuilder) {
-        this.graphicsBuilder = graphicsBuilder;
     }
 
     public GraphicsBuilder getGraphicsBuilder() {
@@ -41,7 +32,8 @@ public class DogfightView implements Runnable, IViewSystem {
 
     @Override
     public void run() {
-
+        this.graphicsBuilder.applyModelToGraphic(this.gameFrame.getGraphics(), this.gameFrame);
+        this.gameFrame.setVisible(true);
     }
 
     @Override

@@ -80,7 +80,8 @@ public class DogfightModel extends Observable implements IDogfightModel{
     @Deprecated
     @Override
     public void setMobilesHavesMoved(){
-
+        this.setChanged();
+        this.notifyObservers();
     }
     @Override
     public Position getPosition() {

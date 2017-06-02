@@ -7,7 +7,7 @@ package jpu2016.dogfight.model;
  * */
 public class Missile extends Mobile {
 
-    private static final int SPEED = 4;
+    private static final int SPEED = 10;
     private static final int WIDTH = 30;
     private static final int HEIGHT = 10;
     private static String image = "missile.png";

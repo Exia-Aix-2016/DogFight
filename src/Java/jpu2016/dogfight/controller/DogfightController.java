@@ -4,6 +4,7 @@ import jpu2016.dogfight.model.*;
 import jpu2016.dogfight.view.IViewSystem;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class DogfightController implements IOrderPerformer {
     private static int TIME_SLEEP = 30;
@@ -109,12 +110,29 @@ public class DogfightController implements IOrderPerformer {
                     }
                 }
             }
+/*
+            List<String> list = new ArrayList<String>();
 
-            for (IMobile mobile: mobiles){
-                if (mobile.isHit()){
-                    this.dogfightModel.removeMobile(mobile);
+            for (Iterator<String> iterator = list.iterator(); iterator.hasNext(); ) {
+                String value = iterator.next();
+                if (value.length() > 5) {
+                    iterator.remove();
+                }
+            }*/
+
+            for(Iterator<IMobile> iterator = mobiles.iterator(); iterator.hasNext();){
+                IMobile mobile = iterator.next();
+                if(mobile.isHit()){
+                   iterator.remove();
                 }
             }
+
+           /* for (IMobile mobile: mobiles){
+                if (mobile.isHit()){
+
+                    this.dogfightModel.removeMobile(mobile);
+                }
+            }*/
 
             this.dogfightModel.setMobilesHavesMoved();
 

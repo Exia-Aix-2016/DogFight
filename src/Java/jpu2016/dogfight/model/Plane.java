@@ -7,7 +7,7 @@ package jpu2016.dogfight.model;
  * */
 public class Plane extends Mobile {
 
-    private static final int SPEED = 2;
+    private static final int SPEED = 5;
     private static final int WIDTH = 100;
     private static final int HEIGHT = 30;
     private static final String IMAGE = "plane1.png";

@@ -18,27 +18,53 @@ public  class EventPerformer implements IEventPerformer {
 
     private UserOrder keyCodeToUserOrder (int keyCode){
         Order order;
+        int player = 1;
+
 
         switch (keyCode){
             case KeyEvent.VK_UP:
                 order = Order.UP;
+
+                break;
+            case KeyEvent.VK_Z:
+                order = Order.UP;
+                player = 2;
                 break;
             case KeyEvent.VK_DOWN:
                 order = Order.DOWN;
                 break;
+            case KeyEvent.VK_S:
+                order = Order.DOWN;
+                player = 2;
+                break;
             case KeyEvent.VK_LEFT:
                 order = Order.LEFT;
                 break;
+            case KeyEvent.VK_Q:
+                order = Order.LEFT;
+                player = 2;
+                break;
+
             case KeyEvent.VK_RIGHT:
                 order = Order.RIGHT;
                 break;
+            case KeyEvent.VK_D:
+                order = Order.RIGHT;
+                player = 2;
+                break;
+
             case KeyEvent.VK_SPACE:
                 order = Order.SHOOT;
                 break;
+            case KeyEvent.VK_A:
+                order = Order.SHOOT;
+                player = 2;
+                break;
+
             default:
                 order = Order.NOP;
         }
-        return new UserOrder(1, order);
+        return new UserOrder(player, order);
     }
 
     @Override

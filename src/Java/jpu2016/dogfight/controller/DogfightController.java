@@ -91,7 +91,8 @@ public class DogfightController implements IOrderPerformer {
     }
 
     private void gameLoop(){
-        while (true){
+        boolean gameLoop = true;
+        while (gameLoop){
             ArrayList<IMobile> mobiles = this.dogfightModel.getMobiles();
             ArrayList<IMobile> missiles = new ArrayList<>();
             ArrayList<IMobile> planes = new ArrayList<>();
@@ -128,6 +129,11 @@ public class DogfightController implements IOrderPerformer {
             } catch (Exception e){
                 System.err.println(e);
             }
+            if(planes.size() == 0) {
+                gameLoop = false;
+
+            }
+
         }
     }
 }

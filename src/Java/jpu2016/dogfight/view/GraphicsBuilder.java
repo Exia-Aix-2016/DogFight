@@ -12,6 +12,7 @@ import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class GraphicsBuilder implements IGraphicsBuilder{
     private BufferedImage emptySky;
@@ -30,7 +31,7 @@ public class GraphicsBuilder implements IGraphicsBuilder{
         return emptySky;
     }
 
-    public void applyModelToGraphic(Graphics graphics, ImageObserver observer){
+    public synchronized void applyModelToGraphic(Graphics graphics, ImageObserver observer){
         IArea area = this.dogfightModel.getArea();
 
         Graphics emptySkyGraphic = this.emptySky.getGraphics();
@@ -40,9 +41,15 @@ public class GraphicsBuilder implements IGraphicsBuilder{
 
         ArrayList<IMobile> mobiles = this.dogfightModel.getMobiles();
 
-        for(IMobile mobile: mobiles ){
-            this.drawMobile(mobile, graphics, observer);
+        for(Iterator<IMobile> mob = mobiles.iterator(); mob.hasNext();){
+            IMobile mobi = mob.next();
+            if(mobi != null)
+                this.drawMobile(mobi, graphics, observer);
         }
+
+       /* for(IMobile mobile: mobiles ){
+            this.drawMobile(mobile, graphics, observer);
+        }*/
     }
 
     private void buildEmptySky(){
@@ -57,7 +64,7 @@ public class GraphicsBuilder implements IGraphicsBuilder{
         return this.dogfightModel.getArea().getDimention().getHeight();
     }
 
-    private void drawMobile(final IMobile mobile, final Graphics graphics, final ImageObserver observer) {
+    private synchronized void drawMobile(final IMobile mobile, final Graphics graphics, final ImageObserver observer) {
         BufferedImage imageMobile = new BufferedImage(mobile.getWidth(), mobile.getHeight(), Transparency.TRANSLUCENT);
         final Graphics graphicsMobile = imageMobile.getGraphics();
 

@@ -46,7 +46,7 @@ public class DogfightModel extends Observable implements IDogfightModel{
     }
 
     @Override
-    public void removeMobile(IMobile mobile){
+    public synchronized void removeMobile(IMobile mobile){
 
         for(int i = 0; i < this.mobiles.size(); i++){
             if(this.mobiles.get(i) == mobile){

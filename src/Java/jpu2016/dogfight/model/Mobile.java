@@ -1,5 +1,7 @@
 package jpu2016.dogfight.model;
 
+import jpu2016.dogfight.sound.Sound;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.IOException;
@@ -179,6 +181,8 @@ public abstract class Mobile implements IMobile {
     }
     @Override
     public void hit(){
+        Sound sound = new Sound();
+        sound.playSound("crash");
         this.hit = true;
     }
 

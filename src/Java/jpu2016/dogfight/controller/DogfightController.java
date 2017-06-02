@@ -1,9 +1,11 @@
 package jpu2016.dogfight.controller;
 
 import jpu2016.dogfight.model.*;
+import jpu2016.dogfight.sound.Sound;
 import jpu2016.dogfight.view.IViewSystem;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class DogfightController implements IOrderPerformer {
     private static int TIME_SLEEP = 30;
@@ -73,6 +75,8 @@ public class DogfightController implements IOrderPerformer {
 
         IMobile missile = new Missile(direction, position);
         this.dogfightModel.addMobile(missile);
+        Sound sound = new Sound();
+        sound.playSound("missile");
     }
 
     private boolean isWeaponOnMobile(final IMobile mobile, final IMobile weapon) {
@@ -91,7 +95,8 @@ public class DogfightController implements IOrderPerformer {
     }
 
     private void gameLoop(){
-        while (true){
+        boolean gameLoop = true;
+        while (gameLoop){
             ArrayList<IMobile> mobiles = this.dogfightModel.getMobiles();
             ArrayList<IMobile> missiles = new ArrayList<>();
             ArrayList<IMobile> planes = new ArrayList<>();
@@ -114,9 +119,10 @@ public class DogfightController implements IOrderPerformer {
                 }
             }
 
-            for (IMobile mobile: mobiles){
-                if (mobile.isHit()){
-                    this.dogfightModel.removeMobile(mobile);
+            for(Iterator<IMobile> iterator = mobiles.iterator(); iterator.hasNext();){
+                IMobile mobile = iterator.next();
+                if(mobile.isHit()){
+                   iterator.remove();
                 }
             }
 
@@ -127,6 +133,11 @@ public class DogfightController implements IOrderPerformer {
             } catch (Exception e){
                 System.err.println(e);
             }
+            if(planes.size() == 0) {
+                gameLoop = false;
+
+            }
+
         }
     }
 }

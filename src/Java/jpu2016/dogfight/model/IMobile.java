@@ -64,7 +64,9 @@ public interface IMobile {
      * */
     void setDogfightModel(DogfightModel dogfightModel);
 
-    boolean hit();
+    void hit();
+
+    boolean isHit();
 
     boolean isWeapon();
 

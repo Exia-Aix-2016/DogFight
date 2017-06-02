@@ -35,38 +35,14 @@ public class Missile extends Mobile {
         return 0;
     }
 
-    @Override
-    public void move(){
-        double y = this.getPosition().getY();
-        double x = this.getPosition().getX();
-        distance_traveled += this.getSpeed();
-        if(this.distance_traveled == MAX_DISTANCE_TRAVELED){
-            this.dogfightModel.removeMobile(this);
-        }else{
-            switch (this.direction){
-                case UP:
-                    this.getPositions().setY(y + this.getSpeed());
-                    break;
-
-                case DOWN:
-                    this.getPositions().setY(y - this.getSpeed());
-                    break;
-
-                case RIGHT:
-                    this.getPositions().setY(x + this.getSpeed());
-                    break;
-
-                case LEFT:
-                    this.getPositions().setY(x - this.getSpeed());
-                    break;
-            }
-            this.dogfightModel.notification();
-        }
+    public static int getHEIGHT() {
+        return HEIGHT;
     }
-    public boolean hit(){
-        this.dogfightModel.removeMobile(this);
-        return true;
+
+    public static int getWIDTH() {
+        return WIDTH;
     }
+
     @Override
     public boolean isWeapon() {
         return true;

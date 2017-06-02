@@ -1,5 +1,6 @@
 package jpu2016.dogfight.view;
 
+import com.sun.org.apache.xpath.internal.operations.Or;
 import jpu2016.dogfight.controller.IOrderPerformer;
 import jpu2016.dogfight.controller.Order;
 import jpu2016.dogfight.controller.UserOrder;
@@ -30,6 +31,9 @@ public  class EventPerformer implements IEventPerformer {
                 break;
             case KeyEvent.VK_RIGHT:
                 order = Order.RIGHT;
+                break;
+            case KeyEvent.VK_SPACE:
+                order = Order.SHOOT;
                 break;
             default:
                 order = Order.NOP;

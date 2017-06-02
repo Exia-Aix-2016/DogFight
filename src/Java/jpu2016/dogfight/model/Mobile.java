@@ -20,6 +20,7 @@ public abstract class Mobile implements IMobile {
     protected Position position;
     private String filenameIMG;
     protected DogfightModel dogfightModel;
+    protected boolean hit = false;
 
     Mobile(Direction direction, Position position, Dimension dimension, int speed, final String image){
         this.direction = direction;
@@ -177,8 +178,13 @@ public abstract class Mobile implements IMobile {
 
     }
     @Override
-    public boolean hit(){
-        return false;
+    public void hit(){
+        this.hit = true;
+    }
+
+    @Override
+    public boolean isHit() {
+        return hit;
     }
 
     @Override

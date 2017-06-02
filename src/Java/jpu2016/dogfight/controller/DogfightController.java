@@ -51,7 +51,21 @@ public class DogfightController implements IOrderPerformer {
     private void lauchMissile(int player){
         IMobile plane = this.dogfightModel.getMobileByPlayer(player);
         Direction direction = plane.getDirection();
-        Position position = plane.getPositions();
+        Position position = new Position(plane.getPositions());
+
+        switch (direction){
+            case RIGHT:
+                position.setX(position.getX() + plane.getDimension().getWidth());
+                break;
+            case LEFT:
+                break;
+            case UP:
+                position.setY(position.getY() - Missile.getHEIGHT());
+                break;
+            case DOWN:
+                position.setY(position.getY() + plane.getDimension().getHeight());
+                break;
+        }
 
         IMobile missile = new Missile(direction, position);
         this.dogfightModel.addMobile(missile);
@@ -62,7 +76,9 @@ public class DogfightController implements IOrderPerformer {
             if (((weapon.getPosition().getY() / weapon.getHeight()) >= (mobile.getPosition().getY() / weapon.getHeight()))     && ((weapon.getPosition().getY() / weapon.getHeight()) <= ((mobile.getPosition().getY() + mobile.getHeight()) / weapon.getHeight()))) {
                 return true;
             }
-        }  return false;
+        }
+
+        return false;
     }
 
     private void manageCollision(IMobile missile, IMobile plane){
@@ -91,6 +107,12 @@ public class DogfightController implements IOrderPerformer {
                         this.manageCollision(missile, plane);
                         break;
                     }
+                }
+            }
+
+            for (IMobile mobile: mobiles){
+                if (mobile.isHit()){
+                    this.dogfightModel.removeMobile(mobile);
                 }
             }
 

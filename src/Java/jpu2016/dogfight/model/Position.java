@@ -1,5 +1,7 @@
 package jpu2016.dogfight.model;
 
+import javafx.geometry.Pos;
+
 /**
  * Created by Mandel on 31/05/2017.
  */
@@ -30,6 +32,15 @@ public class Position {
         this.setX(x);
         this.setY(y);
     }
+
+    public Position(Position position){
+        this.setMaxX(position.getMaxX());
+        this.setMaxY(position.getMaxY());
+        this.setX(position.getX());
+        this.setY(position.getY());
+    }
+
+
     //Mutateur
     public void setX(double x) {
         if (x < 0){

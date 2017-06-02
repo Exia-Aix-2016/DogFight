@@ -24,14 +24,6 @@ public class Plane extends Mobile {
     }
 
     @Override
-    public boolean hit() {
-        this.dogfightModel.removeMobile(this);
-        return true;
-    }
-
-
-
-    @Override
     public boolean isWeapon() {
         return false;
     }

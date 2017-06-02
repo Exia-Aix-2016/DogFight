@@ -1,6 +1,7 @@
 package jpu2016.dogfight.controller;
 
 import jpu2016.dogfight.model.*;
+import jpu2016.dogfight.sound.Sound;
 import jpu2016.dogfight.view.IViewSystem;
 
 import java.util.ArrayList;
@@ -70,6 +71,8 @@ public class DogfightController implements IOrderPerformer {
 
         IMobile missile = new Missile(direction, position);
         this.dogfightModel.addMobile(missile);
+        Sound sound = new Sound();
+        sound.playSound("missile");
     }
 
     private boolean isWeaponOnMobile(final IMobile mobile, final IMobile weapon) {

@@ -14,7 +14,7 @@ public class DogFight {
         
         dogfightController.setViewSystem(dogfightView);
 
-        dogfightModel.addMobile(new Cloud(Direction.RIGHT, new Position(5, 5,5,5)));
+        dogfightModel.addMobile(new Cloud(Direction.RIGHT, new Position(5, 5,500,500)));
         dogfightController.play();
     }
 }

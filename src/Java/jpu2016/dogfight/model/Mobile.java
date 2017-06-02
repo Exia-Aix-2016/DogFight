@@ -95,10 +95,10 @@ public abstract class Mobile implements IMobile {
                 this.getPositions().setY(y - this.getSpeed());
                 break;
             case RIGHT:
-                this.getPositions().setY(x + this.getSpeed());
+                this.getPositions().setX(x + this.getSpeed());
                 break;
             case LEFT:
-                this.getPositions().setY(x - this.getSpeed());
+                this.getPositions().setX(x - this.getSpeed());
                 break;
         }
     }

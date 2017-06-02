@@ -7,7 +7,7 @@ package jpu2016.dogfight.model;
  * */
 public class Missile extends Mobile {
 
-    private static final int SPEED = 4;
+    private static final int SPEED = 10;
     private static final int WIDTH = 30;
     private static final int HEIGHT = 10;
     private static String image = "missile.png";
@@ -35,38 +35,24 @@ public class Missile extends Mobile {
         return 0;
     }
 
+    public static int getHEIGHT() {
+        return HEIGHT;
+    }
+
+    public static int getWIDTH() {
+        return WIDTH;
+    }
     @Override
     public void move(){
-        double y = this.getPosition().getY();
-        double x = this.getPosition().getX();
-        distance_traveled += this.getSpeed();
+        super.move();
+        this.distance_traveled += SPEED;
         if(this.distance_traveled == MAX_DISTANCE_TRAVELED){
-            this.dogfightModel.removeMobile(this);
-        }else{
-            switch (this.direction){
-                case UP:
-                    this.getPositions().setY(y + this.getSpeed());
-                    break;
-
-                case DOWN:
-                    this.getPositions().setY(y - this.getSpeed());
-                    break;
-
-                case RIGHT:
-                    this.getPositions().setY(x + this.getSpeed());
-                    break;
-
-                case LEFT:
-                    this.getPositions().setY(x - this.getSpeed());
-                    break;
-            }
-            this.dogfightModel.notification();
+            this.hit();
         }
+
+
     }
-    public boolean hit(){
-        this.dogfightModel.removeMobile(this);
-        return true;
-    }
+
     @Override
     public boolean isWeapon() {
         return true;

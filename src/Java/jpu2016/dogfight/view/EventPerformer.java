@@ -1,5 +1,6 @@
 package jpu2016.dogfight.view;
 
+import com.sun.org.apache.xpath.internal.operations.Or;
 import jpu2016.dogfight.controller.IOrderPerformer;
 import jpu2016.dogfight.controller.Order;
 import jpu2016.dogfight.controller.UserOrder;
@@ -15,11 +16,6 @@ public  class EventPerformer implements IEventPerformer {
         this.orderPerformer = oderPerformer;
     }
 
-        public void eventPerformer(KeyEvent KeyCode){
-
-    }
-
-    @Deprecated
     private UserOrder keyCodeToUserOrder (int keyCode){
         Order order;
 
@@ -36,6 +32,9 @@ public  class EventPerformer implements IEventPerformer {
             case KeyEvent.VK_RIGHT:
                 order = Order.RIGHT;
                 break;
+            case KeyEvent.VK_SPACE:
+                order = Order.SHOOT;
+                break;
             default:
                 order = Order.NOP;
         }
@@ -44,7 +43,9 @@ public  class EventPerformer implements IEventPerformer {
 
     @Override
     public void eventPerform(KeyEvent keyCode) {
-
+        System.out.println("event");
+        UserOrder userOrder = this.keyCodeToUserOrder(keyCode.getKeyCode());
+        this.orderPerformer.orderPerform(userOrder);
     }
 
 }

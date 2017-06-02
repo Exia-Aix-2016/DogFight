@@ -42,6 +42,16 @@ public class Missile extends Mobile {
     public static int getWIDTH() {
         return WIDTH;
     }
+    @Override
+    public void move(){
+        super.move();
+        this.distance_traveled += SPEED;
+        if(this.distance_traveled == MAX_DISTANCE_TRAVELED){
+            this.hit();
+        }
+
+
+    }
 
     @Override
     public boolean isWeapon() {

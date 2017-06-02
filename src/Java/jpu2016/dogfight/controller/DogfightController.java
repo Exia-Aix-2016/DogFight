@@ -110,15 +110,6 @@ public class DogfightController implements IOrderPerformer {
                     }
                 }
             }
-/*
-            List<String> list = new ArrayList<String>();
-
-            for (Iterator<String> iterator = list.iterator(); iterator.hasNext(); ) {
-                String value = iterator.next();
-                if (value.length() > 5) {
-                    iterator.remove();
-                }
-            }*/
 
             for(Iterator<IMobile> iterator = mobiles.iterator(); iterator.hasNext();){
                 IMobile mobile = iterator.next();
@@ -126,13 +117,6 @@ public class DogfightController implements IOrderPerformer {
                    iterator.remove();
                 }
             }
-
-           /* for (IMobile mobile: mobiles){
-                if (mobile.isHit()){
-
-                    this.dogfightModel.removeMobile(mobile);
-                }
-            }*/
 
             this.dogfightModel.setMobilesHavesMoved();
 

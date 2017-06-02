@@ -24,7 +24,7 @@ public class DogFight {
         dogfightModel.addMobile(new Cloud(Direction.RIGHT, new Position(100, 400,WIDTH,HEIGHT)));
 
         dogfightModel.addMobile(new Plane(PLAYER1, Direction.RIGHT, new Position(0, 200,WIDTH,HEIGHT),  "plane1.png"));
-        dogfightModel.addMobile(new Plane(PLAYER2, Direction.RIGHT, new Position(HEIGHT, 200,WIDTH,HEIGHT),  "plane2.png"));
+        dogfightModel.addMobile(new Plane(PLAYER2, Direction.RIGHT, new Position(0, 0,WIDTH,HEIGHT),  "plane2.png"));
 
         dogfightController.play();
     }

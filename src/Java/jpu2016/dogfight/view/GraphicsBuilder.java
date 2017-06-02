@@ -32,7 +32,7 @@ public class GraphicsBuilder implements IGraphicsBuilder{
         return emptySky;
     }
 
-    public synchronized void applyModelToGraphic(Graphics graphics, ImageObserver observer){
+    public void applyModelToGraphic(Graphics graphics, ImageObserver observer){
         IArea area = this.dogfightModel.getArea();
 
         Graphics emptySkyGraphic = this.emptySky.getGraphics();
@@ -61,7 +61,7 @@ public class GraphicsBuilder implements IGraphicsBuilder{
         return this.dogfightModel.getArea().getDimention().getHeight();
     }
 
-    private synchronized void drawMobile(final IMobile mobile, final Graphics graphics, final ImageObserver observer) {
+    private void drawMobile(final IMobile mobile, final Graphics graphics, final ImageObserver observer) {
         BufferedImage imageMobile = new BufferedImage(mobile.getWidth(), mobile.getHeight(), Transparency.TRANSLUCENT);
         final Graphics graphicsMobile = imageMobile.getGraphics();
 
@@ -102,7 +102,7 @@ public class GraphicsBuilder implements IGraphicsBuilder{
         }
         if (isVerticalOut){
             final BufferedImage imageMobileV = imageMobile.getSubimage(0, this.dogfightModel.getArea().getDimention().getHeight() - mobile.getPosition().y, mobile.getWidth(),(mobile.getHeight() - this.dogfightModel.getArea().getDimention().getHeight()) + mobile.getPosition().y);
-            graphics.drawImage(imageMobileV, mobile.getPosition().x, 0, observer);
+            graphics.drawImage(imageMobileV, mobile.getPosition().x, 1, observer);
         }
         if (isHorizontalOut && isVerticalOut) {
            final BufferedImage imageMobileHV = imageMobile.getSubimage(this.dogfightModel.getArea().getDimention().getWidth() - mobile.getPosition().x, this.dogfightModel.getArea().getDimention().getHeight() - mobile.getPosition().y, (mobile.getWidth() - this.dogfightModel.getArea().getDimention().getWidth()) + mobile.getPosition().x, (mobile.getHeight() - this.dogfightModel.getArea().getDimention().getHeight()) + mobile.getPosition().y);

@@ -32,23 +32,15 @@ public class Position {
     }
     //Mutateur
     public void setX(double x) {
-        if(x < this.getMaxX())
-        {
-            this.x = x;
+        if (x < 0){
+            this.x = this.getMaxX() + x;
+        } else {
+            this.x = x % this.getMaxX();
         }
-        else{
-            this.x = this.getMaxX();
-        }
-
     }
+
     public void setY(double y) {
-        if(y < this.getMaxY())
-        {
-            this.y = y;
-        }
-        else{
-            y = this.getMaxY();
-        }
+        this.y = y % this.getMaxY();
     }
 
     public void setMaxX(double maxX) {

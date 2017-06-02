@@ -10,12 +10,11 @@ public class Plane extends Mobile {
     private static final int SPEED = 5;
     private static final int WIDTH = 100;
     private static final int HEIGHT = 30;
-    private static final String IMAGE = "plane1.png";
     private int player;
 
 
-    public Plane(final int player, Direction direction, Position position){
-        super(direction, position, new Dimension(WIDTH, HEIGHT), SPEED,  IMAGE);
+    public Plane(final int player, Direction direction, Position position, final String nameImage){
+        super(direction, position, new Dimension(WIDTH, HEIGHT), SPEED, nameImage);
         this.player = player;
     }
 

@@ -12,6 +12,7 @@ import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 
 public class GraphicsBuilder implements IGraphicsBuilder{
@@ -46,10 +47,6 @@ public class GraphicsBuilder implements IGraphicsBuilder{
             if(mobi != null)
                 this.drawMobile(mobi, graphics, observer);
         }
-
-       /* for(IMobile mobile: mobiles ){
-            this.drawMobile(mobile, graphics, observer);
-        }*/
     }
 
     private void buildEmptySky(){

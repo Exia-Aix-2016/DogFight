@@ -110,11 +110,14 @@ public class DogfightController implements IOrderPerformer {
                 }
             }
 
-            for (IMobile plane: planes){
-                for (IMobile missile: missiles){
-                    if (this.isWeaponOnMobile(plane, missile)){
-                        this.manageCollision(missile, plane);
-                        break;
+            for(Iterator<IMobile> plane = planes.iterator(); plane.hasNext();){
+                IMobile avion = plane.next();
+                if(avion != null){
+                    for(Iterator<IMobile> rocket = missiles.iterator(); rocket.hasNext();){
+                        IMobile missile = rocket.next();
+                        if(this.isWeaponOnMobile(avion, missile)){
+                            this.manageCollision(missile, avion);
+                        }
                     }
                 }
             }
@@ -137,7 +140,6 @@ public class DogfightController implements IOrderPerformer {
                 gameLoop = false;
 
             }
-
         }
     }
 }

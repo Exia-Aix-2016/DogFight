@@ -43,7 +43,6 @@ public  class EventPerformer implements IEventPerformer {
 
     @Override
     public void eventPerform(KeyEvent keyCode) {
-        System.out.println("event");
         UserOrder userOrder = this.keyCodeToUserOrder(keyCode.getKeyCode());
         this.orderPerformer.orderPerform(userOrder);
     }

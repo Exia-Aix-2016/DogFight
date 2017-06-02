@@ -1,11 +1,14 @@
 package jpu2016.dogfight.view;
 
+import javafx.scene.transform.Scale;
 import jpu2016.dogfight.model.IArea;
 import jpu2016.dogfight.model.IDogfightModel;
 import jpu2016.dogfight.model.IMobile;
 import jpu2016.gameframe.IGraphicsBuilder;
 
 import java.awt.*;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.util.ArrayList;
@@ -55,10 +58,35 @@ public class GraphicsBuilder implements IGraphicsBuilder{
     }
 
     private void drawMobile(final IMobile mobile, final Graphics graphics, final ImageObserver observer) {
-        final BufferedImage imageMobile = new BufferedImage(mobile.getWidth(), mobile.getHeight(), Transparency.TRANSLUCENT);
+        BufferedImage imageMobile = new BufferedImage(mobile.getWidth(), mobile.getHeight(), Transparency.TRANSLUCENT);
         final Graphics graphicsMobile = imageMobile.getGraphics();
 
+        double rotationRequired;
+
+        switch (mobile.getDirection()){
+            case UP:
+                rotationRequired = Math.toRadians(-90);
+                break;
+            case DOWN:
+                rotationRequired = Math.toRadians(90);
+                break;
+            case LEFT:
+                rotationRequired = Math.toRadians(180);
+                break;
+            case RIGHT:
+                rotationRequired = Math.toRadians(0);
+                break;
+            default:
+                rotationRequired = Math.toRadians(0);
+        }
+
+        AffineTransform tx = AffineTransform.getRotateInstance(rotationRequired, mobile.getWidth()/2, mobile.getHeight()/2);
+        AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
+
         graphicsMobile.drawImage(mobile.getImage(), 0, 0, mobile.getWidth(), mobile.getHeight(), observer);
+
+        imageMobile = op.filter(imageMobile, null);
+
         graphics.drawImage(imageMobile, mobile.getPosition().x, mobile.getPosition().y, observer);
 
         final boolean isHorizontalOut = (mobile.getPosition().getX() + mobile.getWidth()) > this.dogfightModel.getArea().getDimention().getWidth();

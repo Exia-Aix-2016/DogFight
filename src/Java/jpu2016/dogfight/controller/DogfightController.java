@@ -56,14 +56,18 @@ public class DogfightController implements IOrderPerformer {
         switch (direction){
             case RIGHT:
                 position.setX(position.getX() + plane.getDimension().getWidth());
+                position.setY(position.getY() + (plane.getDimension().getHeight()/2) - (Missile.getHEIGHT()/2));
                 break;
             case LEFT:
+                position.setY(position.getY() + (plane.getDimension().getHeight()/2) - (Missile.getHEIGHT()/2));
                 break;
             case UP:
                 position.setY(position.getY() - Missile.getHEIGHT());
+                position.setX(position.getX() + (plane.getDimension().getWidth()/2) - (Missile.getWIDTH()/2));
                 break;
             case DOWN:
                 position.setY(position.getY() + plane.getDimension().getHeight());
+                position.setX(position.getX() + (plane.getDimension().getWidth()/2) - (Missile.getWIDTH()/2));
                 break;
         }
 

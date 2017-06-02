@@ -65,11 +65,16 @@ public class DogfightModel extends Observable implements IDogfightModel{
 
     @Override
     public IMobile getMobileByPlayer(final int player){
-        if(this.mobiles.get(player).isPlayer(player)){
-            return this.mobiles.get(player);
+
+        IMobile res = null;
+
+        for (IMobile mobile: this.getMobiles()){
+            if (mobile.isPlayer(player)){
+                res = mobile;
+            }
         }
 
-        return this.mobiles.get(player);
+        return res;
 
     }
 

@@ -15,11 +15,6 @@ public  class EventPerformer implements IEventPerformer {
         this.orderPerformer = oderPerformer;
     }
 
-        public void eventPerformer(KeyEvent KeyCode){
-
-    }
-
-    @Deprecated
     private UserOrder keyCodeToUserOrder (int keyCode){
         Order order;
 
@@ -44,7 +39,9 @@ public  class EventPerformer implements IEventPerformer {
 
     @Override
     public void eventPerform(KeyEvent keyCode) {
-
+        System.out.println("event");
+        UserOrder userOrder = this.keyCodeToUserOrder(keyCode.getKeyCode());
+        this.orderPerformer.orderPerform(userOrder);
     }
 
 }

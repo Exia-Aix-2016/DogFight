@@ -16,6 +16,7 @@ public class GameFrame extends JFrame implements KeyListener {
         this.setTitle(title);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setResizable(false);
+        this.addKeyListener(this);
 
         this.gamePanel = new GamePanel(graphicBuilder);
 
@@ -25,7 +26,6 @@ public class GameFrame extends JFrame implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent keyEvent) {
-
     }
 
     @Override
@@ -35,6 +35,5 @@ public class GameFrame extends JFrame implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent keyEvent) {
-
     }
 }

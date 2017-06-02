@@ -40,7 +40,11 @@ public class Position {
     }
 
     public void setY(double y) {
-        this.y = y % this.getMaxY();
+        if (y < 0){
+            this.y = this.getMaxY() + y;
+        } else {
+            this.y = y % this.getMaxY();
+        }
     }
 
     public void setMaxX(double maxX) {

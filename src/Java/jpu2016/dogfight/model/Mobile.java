@@ -88,11 +88,11 @@ public abstract class Mobile implements IMobile {
 
         switch (this.direction){
             case UP:
-                this.getPositions().setY(y + this.getSpeed());
+                this.getPositions().setY(y - this.getSpeed());
                 break;
 
             case DOWN:
-                this.getPositions().setY(y - this.getSpeed());
+                this.getPositions().setY(y + this.getSpeed());
                 break;
             case RIGHT:
                 this.getPositions().setX(x + this.getSpeed());

@@ -14,9 +14,9 @@ public class Plane extends Mobile {
     private int player;
 
 
-    public Plane(final int player, Direction direction, Position position, final String image){
+    public Plane(final int player, Direction direction, Position position){
         super(direction, position, new Dimension(WIDTH, HEIGHT), SPEED,  IMAGE);
-
+        this.player = player;
     }
 
     public boolean isPlayer(final int player){
